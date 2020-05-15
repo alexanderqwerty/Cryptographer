@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0aa3c4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Crypter.InfoForm">
+    <children>
+      <Circle fx:id="BackCirBt" fill="#0aa3c4" layoutX="569.0" layoutY="34.0" onMouseClicked="#goToMainForm" radius="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+        <Circle fill="#364fd9" layoutX="73.0" layoutY="241.0" radius="138.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+        <Circle fill="#363ed9" layoutX="152.0" layoutY="68.0" radius="195.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+        <Text fill="WHITE" layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="О приложении" wrappingWidth="355.13671875">
+            <font>
+                <Font name="Verdana Pro Cond Black" size="45.0" />
+            </font>
+        </Text>
+        <Text layoutX="35.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Это приложение в котором вы сможете быстро зашифровать или расшифровать любой текст. Оно использует тип шифрования AES. Так что даже если кому-нибудь понадобится прочитать что вы написали без кода ему не удастся расшифровать по крайне мере за следующие столетие." wrappingWidth="498.0">
+         <font>
+            <Font name="Verdana Pro" size="18.0" />
+         </font></Text>
+        <ImageView fx:id="BackBt" fitHeight="38.0" fitWidth="41.0" layoutX="545.0" layoutY="14.0" onMouseClicked="#goToMainForm">
+            <image>
+                <Image url="@93634.png" />
+            </image>
+        </ImageView>
+
+    </children>
+</AnchorPane>
