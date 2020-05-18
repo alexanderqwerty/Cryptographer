@@ -1,11 +1,16 @@
 package sample.Crypter;
 
-import java.io.IOException;
-import java.net.URL;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.util.Base64;
-import java.util.ResourceBundle;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,36 +19,38 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class EncryptForm {
 
     @FXML
-    private Button ChangeBt;
-
-    @FXML
-    private AnchorPane achorPane;
-
-    @FXML
-    private AnchorPane achorPane2;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Circle BackCirBt;
-
-    @FXML
-    private TextField Key;
+    private AnchorPane anchorPane;
 
     @FXML
     private TextField Text;
 
     @FXML
+    private TextField Key;
+
+    @FXML
     private TextArea EnText;
+
+    @FXML
+    private AnchorPane anchorPane2;
+
+    @FXML
+    private TextField Text2;
+
+    @FXML
+    private TextField Key1;
+
+    @FXML
+    private TextField Text1;
+
+    @FXML
+    private Button ChangeBt;
+
 
     //Проверяет парвильно ли заполнены строки и производит зашифровывает
     @FXML
@@ -71,17 +78,19 @@ public class EncryptForm {
         }
     }
 
+    @FXML
+    private Circle BackCirBt;
 
     //Возврант на главную
     @FXML
     void goToMainForm(MouseEvent event) {
         BackCirBt.getScene().getWindow().hide();
         try {
-        Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,20 +100,98 @@ public class EncryptForm {
     //Замена Pane
     @FXML
     void Change(MouseEvent event) {
-        if(achorPane.isVisible()){
-            achorPane.setVisible(false);
-            achorPane2.setVisible(true);
+        if (anchorPane.isVisible()) {
+            anchorPane.setVisible(false);
+            anchorPane2.setVisible(true);
             ChangeBt.setText("Текст");
-        }else if (achorPane2.isVisible()){
-            achorPane2.setVisible(false);
-            achorPane.setVisible(true);
+        } else if (anchorPane2.isVisible()) {
+            anchorPane2.setVisible(false);
+            anchorPane.setVisible(true);
             ChangeBt.setText("Файл");
         }
     }
 
-
     @FXML
     void initialize() {
+    }
 
+    //Выбор Файла и написание его в записный места
+    @FXML
+    private Button FileChooserBt1;
+    @FXML
+    private Button FileChooserBt2;
+
+    final FileChooser fileChooser = new FileChooser();
+
+    @FXML
+    void DoEncriptFile(MouseEvent event) {
+        boolean flag = true;
+        if (Text1 != null && Text1.getText().equals("")) {
+            flag = false;
+            Text1.setStyle("-fx-border-color:red");
+        } else {
+            Text1.setStyle("-fx-border-color:green");
+
+        }
+        if (Text2 != null && Text2.getText().equals("")) {
+            flag = false;
+            Text2.setStyle("-fx-border-color:red");
+        } else {
+            Text2.setStyle("-fx-border-color:green");
+        }
+        if (Key != null && Key.getText().equals("")) {
+            flag = false;
+            Key.setStyle("-fx-border-color:red");
+        } else {
+            Key.setStyle("-fx-border-color:green");
+        }
+
+        if (flag) {
+            try {
+                FileReader fileReader = new FileReader(String.valueOf(Text1));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void printLog(TextField textField, List<File> files) {
+        if (files == null || files.isEmpty()) {
+            return;
+        }
+        for (File file : files) {
+            textField.appendText(file.getAbsolutePath());
+        }
+    }
+
+    @FXML
+    void FileChooser1(MouseEvent event) {
+        FileChooserBt1.setOnAction(new EventHandler<ActionEvent>() {
+            Stage stage = new Stage();
+
+            @Override
+            public void handle(ActionEvent event) {
+                Text1.clear();
+                List<File> files = fileChooser.showOpenMultipleDialog(stage);
+                printLog(Text1, files);
+            }
+        });
+    }
+
+    @FXML
+    void FileChooser2(MouseEvent event) {
+        FileChooserBt2.setOnAction(new EventHandler<ActionEvent>() {
+            Stage stage = new Stage();
+
+            @Override
+            public void handle(ActionEvent event) {
+                Text2.clear();
+                List<File> files = fileChooser.showOpenMultipleDialog(stage);
+                printLog(Text2, files);
+            }
+        });
     }
 }
+
+
+

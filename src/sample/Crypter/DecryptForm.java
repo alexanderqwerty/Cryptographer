@@ -9,13 +9,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class DecryptForm {
+
+    @FXML
+    private Button ChangeBt;
+
+    @FXML
+    private AnchorPane anchorPane2;
+
+    @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private TextArea DeText;
@@ -38,7 +49,7 @@ public class DecryptForm {
         //Проверки
         if (Text != null && Text.getText().equals("")) {
             Text.setStyle("-fx-border-color:red");
-        }else {
+        } else {
             try {
                 AES.decrypt("1234567812345678", Base64.getDecoder().decode(Text.getText()));
                 Text.setStyle("-fx-border-color:green");
@@ -58,6 +69,20 @@ public class DecryptForm {
 
         }
     }
+
+    @FXML
+    void Chage(MouseEvent event) {
+        if (anchorPane.isVisible()) {
+            anchorPane.setVisible(false);
+            anchorPane2.setVisible(true);
+            ChangeBt.setText("Текст");
+        } else if (anchorPane2.isVisible()) {
+            anchorPane2.setVisible(false);
+            anchorPane.setVisible(true);
+            ChangeBt.setText("Файл");
+        }
+    }
+
     @FXML
     private Circle BackCirBt;
 
@@ -75,3 +100,4 @@ public class DecryptForm {
         }
     }
 }
+
