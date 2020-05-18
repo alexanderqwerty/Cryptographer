@@ -6,18 +6,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.util.Base64;
 import java.util.ResourceBundle;
-
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
@@ -25,16 +18,14 @@ import javafx.stage.Stage;
 
 public class EncryptForm {
 
-    ObservableList list = FXCollections.observableArrayList();
+    @FXML
+    private Button ChangeBt;
 
     @FXML
     private AnchorPane achorPane;
 
     @FXML
     private AnchorPane achorPane2;
-
-    @FXML
-    private ChoiceBox<String> ChoiceBox;
 
     @FXML
     private ResourceBundle resources;
@@ -86,30 +77,34 @@ public class EncryptForm {
     void goToMainForm(MouseEvent event) {
         BackCirBt.getScene().getWindow().hide();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
         } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
 
-    void loadData() {
-
-        list.removeAll(list);
-        String a = "Текст";
-        String b = "Файл";
-        list.addAll(a, b);
-        ChoiceBox.getItems().addAll(list);
-
+    //Замена Pane
+    @FXML
+    void Change(MouseEvent event) {
+        if(achorPane.isVisible()){
+            achorPane.setVisible(false);
+            achorPane2.setVisible(true);
+            ChangeBt.setText("Текст");
+        }else if (achorPane2.isVisible()){
+            achorPane2.setVisible(false);
+            achorPane.setVisible(true);
+            ChangeBt.setText("Файл");
+        }
     }
 
 
     @FXML
     void initialize() {
-        loadData();
 
     }
 }
