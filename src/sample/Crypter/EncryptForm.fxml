@@ -28,7 +28,7 @@
             <Font name="Verdana Pro Cond Black" size="96.0" />
          </font>
       </Text>
-      <AnchorPane fx:id="anchorPane" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="500.0" visible="false">
+      <AnchorPane fx:id="anchorPane" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="500.0">
          <children>
             <TextField fx:id="Text" layoutX="17.0" layoutY="41.0" prefHeight="25.0" prefWidth="451.0" promptText="Тект" />
             <TextField fx:id="Key" layoutX="18.0" layoutY="96.0" prefHeight="25.0" prefWidth="451.0" promptText="Ключ (16 знаков)" />
@@ -46,7 +46,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPane2" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="501.0">
+      <AnchorPane fx:id="anchorPane2" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="501.0" visible="false">
          <children>
             <TextField fx:id="Text1" layoutX="55.0" layoutY="40.0" prefHeight="25.0" prefWidth="406.0" promptText="Расположение файла" />
             <TextField fx:id="Key1" layoutX="17.0" layoutY="173.0" prefHeight="25.0" prefWidth="451.0" promptText="Ключ (16 знаков)" />
@@ -61,19 +61,20 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="Text2" layoutX="55.0" layoutY="97.0" prefHeight="25.0" prefWidth="406.0" promptText="Место для сохранения файла" />
+            <TextField fx:id="Text2" layoutX="55.0" layoutY="81.0" prefHeight="25.0" prefWidth="406.0" promptText="Место для сохранения файла" />
             <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="38.0" onMouseClicked="#FileChooser1">
                <image>
                   <Image url="@mappe.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="95.0" onMouseClicked="#FileChooser2">
+            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="79.0" onMouseClicked="#FileChooser2">
                <image>
                   <Image url="@mappe.png" />
                </image>
             </ImageView>
             <Button fx:id="FileChooserBt1" layoutX="13.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#FileChooser1" opacity="0.0" prefWidth="41.0" />
-            <Button fx:id="FileChooserBt2" layoutX="13.0" layoutY="97.0" mnemonicParsing="false" onMouseClicked="#FileChooser1" opacity="0.0" prefWidth="41.0" />
+            <Button fx:id="FileChooserBt2" layoutX="13.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#FileChooser2" opacity="0.0" prefWidth="41.0" />
+            <TextField fx:id="NameFile" layoutX="17.0" layoutY="119.0" prefHeight="25.0" prefWidth="451.0" promptText="Название файла и его разрешение" />
          </children>
       </AnchorPane>
       <Button fx:id="ChangeBt" layoutX="93.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#Change" text="Фыйл" />

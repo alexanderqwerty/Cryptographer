@@ -1,11 +1,9 @@
 package sample.Crypter;
 
 import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.GeneralSecurityException;
-import java.security.NoSuchAlgorithmException;
 
 //Шифровка и расшифровка
 public class AES {

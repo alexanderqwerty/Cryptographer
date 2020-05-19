@@ -1,10 +1,15 @@
 package sample.Crypter;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.util.Base64;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class DecryptForm {
@@ -43,6 +49,18 @@ public class DecryptForm {
     @FXML
     private URL location;
 
+    @FXML
+    private TextField Key1;
+
+    @FXML
+    private TextField Text1;
+
+    @FXML
+    private TextField NameFile;
+
+    @FXML
+    private TextField Text2;
+
     //Проверяет парвильно ли заполнены строки и производит расшифровываине
     @FXML
     void DoDecrypt(MouseEvent event) {
@@ -68,6 +86,11 @@ public class DecryptForm {
         } catch (GeneralSecurityException e) {
 
         }
+    }
+
+    @FXML
+    void DoEncriptFile(MouseEvent event) {
+
     }
 
     @FXML
@@ -98,6 +121,52 @@ public class DecryptForm {
             stage.show();
         } catch (IOException e) {
         }
+    }
+
+    //FileChooser
+    @FXML
+    private Button FileChooserBt1;
+
+    @FXML
+    private Button FileChooserBt2;
+
+    final FileChooser fileChooser = new FileChooser();
+
+    private void printLog(TextField textField, List<File> files) {
+        if (files == null || files.isEmpty()) {
+            return;
+        }
+        for (File file : files) {
+            textField.appendText(file.getAbsolutePath());
+        }
+    }
+
+    @FXML
+    void FileChooser1(MouseEvent event) {
+        FileChooserBt1.setOnAction(new EventHandler<ActionEvent>() {
+            Stage stage = new Stage();
+
+            @Override
+            public void handle(ActionEvent event) {
+                Text1.clear();
+                List<File> files = fileChooser.showOpenMultipleDialog(stage);
+                printLog(Text1, files);
+            }
+        });
+    }
+
+    @FXML
+    void FileChooser2(MouseEvent event) {
+        FileChooserBt2.setOnAction(new EventHandler<ActionEvent>() {
+            Stage stage = new Stage();
+
+            @Override
+            public void handle(ActionEvent event) {
+                Text2.clear();
+                List<File> files = fileChooser.showOpenMultipleDialog(stage);
+                printLog(Text2, files);
+            }
+        });
     }
 }
 

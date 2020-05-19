@@ -1,8 +1,9 @@
 package sample.Crypter;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.GeneralSecurityException;
 import java.util.Base64;
 import java.io.File;
@@ -50,6 +51,9 @@ public class EncryptForm {
 
     @FXML
     private Button ChangeBt;
+
+    @FXML
+    private TextField NameFile;
 
 
     //Проверяет парвильно ли заполнены строки и производит зашифровывает
@@ -115,14 +119,7 @@ public class EncryptForm {
     void initialize() {
     }
 
-    //Выбор Файла и написание его в записный места
-    @FXML
-    private Button FileChooserBt1;
-    @FXML
-    private Button FileChooserBt2;
-
-    final FileChooser fileChooser = new FileChooser();
-
+    //Зашифровывание файла
     @FXML
     void DoEncriptFile(MouseEvent event) {
         boolean flag = true;
@@ -131,7 +128,6 @@ public class EncryptForm {
             Text1.setStyle("-fx-border-color:red");
         } else {
             Text1.setStyle("-fx-border-color:green");
-
         }
         if (Text2 != null && Text2.getText().equals("")) {
             flag = false;
@@ -139,7 +135,7 @@ public class EncryptForm {
         } else {
             Text2.setStyle("-fx-border-color:green");
         }
-        if (Key != null && Key.getText().equals("")) {
+        if (Key != null && Key.getText().equals("") && Key != null && Key.getText().length() != 16) {
             flag = false;
             Key.setStyle("-fx-border-color:red");
         } else {
@@ -148,12 +144,22 @@ public class EncryptForm {
 
         if (flag) {
             try {
-                FileReader fileReader = new FileReader(String.valueOf(Text1));
-            } catch (FileNotFoundException e) {
+                byte[] fileBytes = Files.readAllBytes((Path) Text1);
+                FileOutputStream f = new FileOutputStream(Text2.getText() + "\\" + NameFile.getText());
+                f.write(AES.encrypt(Key1.getText(), fileBytes));
+            } catch (IOException | GeneralSecurityException e) {
                 e.printStackTrace();
             }
         }
     }
+
+    //FileChooser
+    @FXML
+    private Button FileChooserBt1;
+    @FXML
+    private Button FileChooserBt2;
+
+    final FileChooser fileChooser = new FileChooser();
 
     private void printLog(TextField textField, List<File> files) {
         if (files == null || files.isEmpty()) {
