@@ -9,6 +9,7 @@ import java.util.Base64;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,7 +26,9 @@ import javafx.stage.Stage;
 
 public class EncryptForm {
 
+    @FXML
     public ImageView BackBt1;
+
     @FXML
     private javafx.scene.text.Text Encription;
 
@@ -63,6 +66,7 @@ public class EncryptForm {
     //Проверяет парвильно ли заполнены строки и производит зашифровывает
     @FXML
     void DoEncript() {
+
         //Проверки
         boolean flag = true;
         if (Text != null && Text.getText().equals("")) {
@@ -72,7 +76,6 @@ public class EncryptForm {
             assert Text != null;
             Text.setStyle("-fx-border-color:green");
         }
-
         if (Key != null && Key.getText().length() != 16) {
             flag = false;
             Key.setStyle("-fx-border-color:red");
@@ -106,7 +109,6 @@ public class EncryptForm {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     //Замена Pane
@@ -126,6 +128,7 @@ public class EncryptForm {
     //Зашифровывание файла
     @FXML
     void DoEncriptFile() {
+
         //Проверки
         boolean flag = true;
         if (Text1 != null && Text1.getText().equals("")) {
@@ -136,7 +139,6 @@ public class EncryptForm {
             assert Text1 != null;
             Text1.setStyle("-fx-border-color:green");
         }
-
         if (Text2 != null && Text2.getText().equals("")) {
             Encription.setOpacity(0);
             flag = false;
@@ -145,20 +147,20 @@ public class EncryptForm {
             assert Text2 != null;
             Text2.setStyle("-fx-border-color:green");
         }
-
         if (Key1.getText().length() != 16) {
             Encription.setOpacity(0);
             flag = false;
             Key1.setStyle("-fx-border-color:red");
-        } else
+        } else {
             Key1.setStyle("-fx-border-color:green");
-
+        }
         if (NameFile.getText() != null && Text2.getText().equals("")) {
             Encription.setOpacity(0);
             flag = false;
             NameFile.setStyle("-fx-border-color:red");
-        } else
+        } else {
             NameFile.setStyle("-fx-border-color:green");
+        }
 
         //Зашифровывание
         if (flag) {
@@ -180,6 +182,7 @@ public class EncryptForm {
     private Button FileChooserBt2;
 
     final FileChooser fileChooser = new FileChooser();
+
     final DirectoryChooser directoryChooser = new DirectoryChooser();
 
 
@@ -196,7 +199,6 @@ public class EncryptForm {
     void FileChooser1() {
         FileChooserBt1.setOnAction(new EventHandler<>() {
             Stage stage = new Stage();
-
             @Override
             public void handle(ActionEvent event) {
                 Text1.clear();
@@ -210,7 +212,6 @@ public class EncryptForm {
     void FileChooser2() {
         FileChooserBt2.setOnAction(new EventHandler<>() {
             Stage stage = new Stage();
-
             @Override
             public void handle(ActionEvent event) {
                 Text2.clear();

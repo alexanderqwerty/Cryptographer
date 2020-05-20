@@ -11,7 +11,9 @@ import java.io.IOException;
 
 public class InfoForm {
 
+    @FXML
     public ImageView BackBt;
+
     @FXML
     private Circle BackCirBt;
 
