@@ -18,7 +18,7 @@
             <Image url="@93634.png" />
          </image>
       </ImageView>
-      <Text fill="#23acca" layoutX="415.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="179.40625">
+      <Text fill="#23acca" layoutX="420.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="179.40625">
          <font>
             <Font name="Verdana Pro Cond Black" size="96.0" />
          </font>
@@ -78,5 +78,10 @@
          </children>
       </AnchorPane>
       <Button fx:id="ChangeBt" layoutX="93.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#Change" text="Фыйл" />
+      <Text fx:id="Encription" fill="#60d900" layoutX="236.0" layoutY="307.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Зашифровано">
+         <font>
+            <Font name="Verdana Pro" size="22.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

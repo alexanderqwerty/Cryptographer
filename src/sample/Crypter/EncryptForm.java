@@ -3,13 +3,12 @@ package sample.Crypter;
 import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.util.Base64;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,10 +19,14 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class EncryptForm {
+
+    @FXML
+    private javafx.scene.text.Text Encription;
 
     @FXML
     private AnchorPane anchorPane;
@@ -122,33 +125,44 @@ public class EncryptForm {
     //Зашифровывание файла
     @FXML
     void DoEncriptFile(MouseEvent event) {
+        //Проверки
         boolean flag = true;
         if (Text1 != null && Text1.getText().equals("")) {
+            Encription.setOpacity(0);
             flag = false;
             Text1.setStyle("-fx-border-color:red");
-        } else {
+        } else
             Text1.setStyle("-fx-border-color:green");
-        }
+
         if (Text2 != null && Text2.getText().equals("")) {
+            Encription.setOpacity(0);
             flag = false;
             Text2.setStyle("-fx-border-color:red");
-        } else {
+        } else
             Text2.setStyle("-fx-border-color:green");
-        }
-        if (Key != null && Key.getText().equals("") && Key != null && Key.getText().length() != 16) {
-            flag = false;
-            Key.setStyle("-fx-border-color:red");
-        } else {
-            Key.setStyle("-fx-border-color:green");
-        }
 
+        if (Key1.getText().length() != 16) {
+            Encription.setOpacity(0);
+            flag = false;
+            Key1.setStyle("-fx-border-color:red");
+        } else
+            Key1.setStyle("-fx-border-color:green");
+
+        if (NameFile.getText() != null && Text2.getText().equals("")) {
+            Encription.setOpacity(0);
+            flag = false;
+            NameFile.setStyle("-fx-border-color:red");
+        } else
+            NameFile.setStyle("-fx-border-color:green");
+
+        //Зашифровывание
         if (flag) {
             try {
-                byte[] fileBytes = Files.readAllBytes((Path) Text1);
+                byte[] fileBytes = Files.readAllBytes(Paths.get(Text1.getText()));
                 FileOutputStream f = new FileOutputStream(Text2.getText() + "\\" + NameFile.getText());
                 f.write(AES.encrypt(Key1.getText(), fileBytes));
+                Encription.setOpacity(1);
             } catch (IOException | GeneralSecurityException e) {
-                e.printStackTrace();
             }
         }
     }
@@ -156,10 +170,13 @@ public class EncryptForm {
     //FileChooser
     @FXML
     private Button FileChooserBt1;
+
     @FXML
     private Button FileChooserBt2;
 
     final FileChooser fileChooser = new FileChooser();
+    final DirectoryChooser directoryChooser = new DirectoryChooser();
+
 
     private void printLog(TextField textField, List<File> files) {
         if (files == null || files.isEmpty()) {
@@ -192,8 +209,8 @@ public class EncryptForm {
             @Override
             public void handle(ActionEvent event) {
                 Text2.clear();
-                List<File> files = fileChooser.showOpenMultipleDialog(stage);
-                printLog(Text2, files);
+                File files = directoryChooser.showDialog(stage);
+                Text2.setText(files.getAbsolutePath());
             }
         });
     }
