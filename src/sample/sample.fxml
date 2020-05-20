@@ -28,7 +28,7 @@
       </Text>
       <ImageView fitHeight="63.0" fitWidth="68.0" layoutX="97.0" layoutY="129.0">
          <image>
-            <Image url="@Crypter/Tipo_Logotip.png" />
+            <Image url="@Crypter/Photoes/Tipo_Logotip.png" />
          </image>
       </ImageView>
       <Text fx:id="InfoForm" fill="WHITE" layoutX="235.0" layoutY="328.0" onMouseClicked="#goToInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="о приложении">
@@ -38,12 +38,12 @@
       </Text>
       <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="324.0" layoutY="255.0">
          <image>
-            <Image url="@Crypter/Rasshfrovat.png" />
+            <Image url="@Crypter/Photoes/Rasshfrovat.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="102.0" layoutY="255.0">
          <image>
-            <Image url="@Crypter/Zashifrovat.png" />
+            <Image url="@Crypter/Photoes/Zashifrovat.png" />
          </image>
       </ImageView>
    </children>

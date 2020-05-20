@@ -1,24 +1,15 @@
 package sample;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.io.IOException;
 
 public class Controller {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button ChoiceEnForm;
@@ -31,7 +22,7 @@ public class Controller {
 
     //Переход в расшифровывание
     @FXML
-    void goToDecrypt(MouseEvent event) {
+    void goToDecrypt() {
         ChoiceDeForm.getScene().getWindow().hide();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Crypter/DecryptForm.fxml"));
@@ -46,7 +37,7 @@ public class Controller {
 
     //Переход в зашифровывание
     @FXML
-    void goToEncrypt(MouseEvent event) {
+    void goToEncrypt() {
         ChoiceEnForm.getScene().getWindow().hide();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Crypter/EncryptForm.fxml"));
@@ -63,7 +54,7 @@ public class Controller {
 
     //Переход в описание
     @FXML
-    void goToInfo(MouseEvent event) {
+    void goToInfo() {
         InfoForm.getScene().getWindow().hide();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Crypter/InfoForm.fxml"));

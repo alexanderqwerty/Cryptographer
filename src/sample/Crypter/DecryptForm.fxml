@@ -30,7 +30,7 @@
       <Circle fx:id="BackCirBt" fill="#0aa3c4" layoutX="42.0" layoutY="47.0" onMouseClicked="#goToMainForm" radius="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="14.0" layoutY="28.0" onMouseClicked="#goToMainForm">
          <image>
-            <Image url="@93634.png" />
+            <Image url="@Photoes/93634.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="anchorPane" layoutX="54.0" layoutY="70.0" prefHeight="300.0" prefWidth="501.0" visible="false">
@@ -69,12 +69,12 @@
             <TextField fx:id="Text2" layoutX="55.0" layoutY="81.0" prefHeight="25.0" prefWidth="406.0" promptText="Место для сохранения файла" />
             <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="38.0" onMouseClicked="#FileChooser1">
                <image>
-                  <Image url="@mappe.png" />
+                  <Image url="@Photoes/mappe.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="79.0" onMouseClicked="#FileChooser2">
                <image>
-                  <Image url="@mappe.png" />
+                  <Image url="@Photoes/mappe.png" />
                </image>
             </ImageView>
             <Button fx:id="FileChooserBt1" layoutX="13.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#FileChooser1" opacity="0.0" prefWidth="41.0" />

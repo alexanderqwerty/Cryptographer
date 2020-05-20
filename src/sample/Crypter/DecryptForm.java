@@ -3,13 +3,11 @@ package sample.Crypter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.util.Base64;
 import java.util.List;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.DirectoryChooser;
@@ -45,13 +42,9 @@ public class DecryptForm {
 
     @FXML
     private TextField Text;
-    @FXML
-    private javafx.scene.text.Text decription;
-    @FXML
-    private ResourceBundle resources;
 
     @FXML
-    private URL location;
+    private javafx.scene.text.Text decription;
 
     @FXML
     private TextField Key1;
@@ -67,7 +60,7 @@ public class DecryptForm {
 
     //Проверяет парвильно ли заполнены строки и производит расшифровываине
     @FXML
-    void DoDecrypt(MouseEvent event) {
+    void DoDecrypt() {
         //Проверки
         boolean flag = true;
         if (Text != null && Text.getText().equals("")) {
@@ -75,6 +68,7 @@ public class DecryptForm {
             Text.setStyle("-fx-border-color:red");
         } else {
             try {
+                assert Text != null;
                 AES.decrypt("1234567812345678", Base64.getDecoder().decode(Text.getText()));
                 Text.setStyle("-fx-border-color:green");
             } catch (GeneralSecurityException | IllegalArgumentException e) {
@@ -86,20 +80,22 @@ public class DecryptForm {
         if (Key != null && Key.getText().length() != 16) {
             flag = false;
             Key.setStyle("-fx-border-color:red");
-        } else
+        } else {
+            assert Key != null;
             Key.setStyle("-fx-border-color:green");
+        }
         //Расшифровывание
         if (flag) {
             try {
                 DeText.setText(new String(AES.decrypt(Key.getText(), Base64.getDecoder().decode(Text.getText()))));
-            } catch (GeneralSecurityException e) {
-
+            } catch (GeneralSecurityException ignored) {
             }
         }
     }
+
     //Расшифровывание файла
     @FXML
-    void DoEncriptFile(MouseEvent event) {
+    void DoEncriptFile() {
         //Проверки
         boolean flag = true;
         if (Text1 != null && Text1.getText().equals("")) {
@@ -108,6 +104,7 @@ public class DecryptForm {
             Text1.setStyle("-fx-border-color:red");
         } else {
             try {
+                assert Text1 != null;
                 AES.decrypt("1234567812345678", Files.readAllBytes(Paths.get(Text1.getText())));
             } catch (GeneralSecurityException | IOException e) {
                 decription.setOpacity(0);
@@ -119,20 +116,26 @@ public class DecryptForm {
             decription.setOpacity(0);
             flag = false;
             Key1.setStyle("-fx-border-color:red");
-        } else
+        } else {
+            assert Key1 != null;
             Key1.setStyle("-fx-border-color:green");
+        }
         if (NameFile != null && NameFile.getText().equals("")) {
             decription.setOpacity(0);
             flag = false;
             NameFile.setStyle("-fx-border-color:red");
-        } else
+        } else {
+            assert NameFile != null;
             NameFile.setStyle("-fx-border-color:green");
+        }
         if (Text2 != null && Text2.getText().equals("")) {
             decription.setOpacity(0);
             flag = false;
             Text2.setStyle("-fx-border-color:red");
-        } else
+        } else {
+            assert Text2 != null;
             Text2.setStyle("-fx-border-color:green");
+        }
         //Расшифровывание
         if (flag) {
             try {
@@ -140,13 +143,14 @@ public class DecryptForm {
                 FileOutputStream f = new FileOutputStream(Text2.getText() + "\\" + NameFile.getText());
                 f.write(AES.decrypt(Key1.getText(), fileBytes));
                 decription.setOpacity(1);
-            } catch (IOException | GeneralSecurityException e) {
+            } catch (IOException | GeneralSecurityException ignored) {
             }
         }
     }
+
     //Смена Pane
     @FXML
-    void Chage(MouseEvent event) {
+    void Chage() {
         if (anchorPane.isVisible()) {
             anchorPane.setVisible(false);
             anchorPane2.setVisible(true);
@@ -163,7 +167,7 @@ public class DecryptForm {
 
     //Возврат на главную
     @FXML
-    void goToMainForm(MouseEvent event) {
+    void goToMainForm() {
         BackCirBt.getScene().getWindow().hide();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
@@ -171,7 +175,7 @@ public class DecryptForm {
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.show();
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
     }
 
@@ -195,8 +199,8 @@ public class DecryptForm {
     }
 
     @FXML
-    void FileChooser1(MouseEvent event) {
-        FileChooserBt1.setOnAction(new EventHandler<ActionEvent>() {
+    void FileChooser1() {
+        FileChooserBt1.setOnAction(new EventHandler<>() {
             Stage stage = new Stage();
 
             @Override
@@ -209,8 +213,8 @@ public class DecryptForm {
     }
 
     @FXML
-    void FileChooser2(MouseEvent event) {
-        FileChooserBt2.setOnAction(new EventHandler<ActionEvent>() {
+    void FileChooser2() {
+        FileChooserBt2.setOnAction(new EventHandler<>() {
             Stage stage = new Stage();
 
             @Override

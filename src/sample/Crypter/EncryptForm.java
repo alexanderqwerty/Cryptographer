@@ -16,7 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.DirectoryChooser;
@@ -61,26 +60,30 @@ public class EncryptForm {
 
     //Проверяет парвильно ли заполнены строки и производит зашифровывает
     @FXML
-    void DoEncript(MouseEvent event) {
+    void DoEncript() {
         //Проверки
         boolean flag = true;
         if (Text != null && Text.getText().equals("")) {
             flag = false;
             Text.setStyle("-fx-border-color:red");
-        } else
+        } else {
+            assert Text != null;
             Text.setStyle("-fx-border-color:green");
+        }
 
         if (Key != null && Key.getText().length() != 16) {
             flag = false;
             Key.setStyle("-fx-border-color:red");
-        } else
+        } else {
+            assert Key != null;
             Key.setStyle("-fx-border-color:green");
+        }
 
         //Зашифровывание и вывод
         if (flag) {
             try {
                 EnText.setText(Base64.getEncoder().encodeToString(AES.encrypt(Key.getText(), (Text.getText().getBytes(StandardCharsets.UTF_8)))));
-            } catch (GeneralSecurityException e) {
+            } catch (GeneralSecurityException ignored) {
             }
         }
     }
@@ -90,7 +93,7 @@ public class EncryptForm {
 
     //Возврант на главную
     @FXML
-    void goToMainForm(MouseEvent event) {
+    void goToMainForm() {
         BackCirBt.getScene().getWindow().hide();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
@@ -106,7 +109,7 @@ public class EncryptForm {
 
     //Замена Pane
     @FXML
-    void Change(MouseEvent event) {
+    void Change() {
         if (anchorPane.isVisible()) {
             anchorPane.setVisible(false);
             anchorPane2.setVisible(true);
@@ -124,22 +127,26 @@ public class EncryptForm {
 
     //Зашифровывание файла
     @FXML
-    void DoEncriptFile(MouseEvent event) {
+    void DoEncriptFile() {
         //Проверки
         boolean flag = true;
         if (Text1 != null && Text1.getText().equals("")) {
             Encription.setOpacity(0);
             flag = false;
             Text1.setStyle("-fx-border-color:red");
-        } else
+        } else {
+            assert Text1 != null;
             Text1.setStyle("-fx-border-color:green");
+        }
 
         if (Text2 != null && Text2.getText().equals("")) {
             Encription.setOpacity(0);
             flag = false;
             Text2.setStyle("-fx-border-color:red");
-        } else
+        } else {
+            assert Text2 != null;
             Text2.setStyle("-fx-border-color:green");
+        }
 
         if (Key1.getText().length() != 16) {
             Encription.setOpacity(0);
@@ -162,7 +169,7 @@ public class EncryptForm {
                 FileOutputStream f = new FileOutputStream(Text2.getText() + "\\" + NameFile.getText());
                 f.write(AES.encrypt(Key1.getText(), fileBytes));
                 Encription.setOpacity(1);
-            } catch (IOException | GeneralSecurityException e) {
+            } catch (IOException | GeneralSecurityException ignored) {
             }
         }
     }
@@ -188,8 +195,8 @@ public class EncryptForm {
     }
 
     @FXML
-    void FileChooser1(MouseEvent event) {
-        FileChooserBt1.setOnAction(new EventHandler<ActionEvent>() {
+    void FileChooser1() {
+        FileChooserBt1.setOnAction(new EventHandler<>() {
             Stage stage = new Stage();
 
             @Override
@@ -202,8 +209,8 @@ public class EncryptForm {
     }
 
     @FXML
-    void FileChooser2(MouseEvent event) {
-        FileChooserBt2.setOnAction(new EventHandler<ActionEvent>() {
+    void FileChooser2() {
+        FileChooserBt2.setOnAction(new EventHandler<>() {
             Stage stage = new Stage();
 
             @Override
