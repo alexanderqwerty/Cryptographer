@@ -9,7 +9,7 @@ import java.util.Base64;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-
+import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -131,7 +131,7 @@ public class EncryptForm {
 
         //Проверки
         boolean flag = true;
-        if (Text1 != null && Text1.getText().equals("")) {
+        if (Text1 != null && Text1.getText().equals("") || !(new File(Objects.requireNonNull(Text1).getText()).isFile())) {
             Encription.setOpacity(0);
             flag = false;
             Text1.setStyle("-fx-border-color:red");
@@ -139,7 +139,7 @@ public class EncryptForm {
             assert Text1 != null;
             Text1.setStyle("-fx-border-color:green");
         }
-        if (Text2 != null && Text2.getText().equals("")) {
+        if (Text2 != null && Text2.getText().equals("") || !(Files.isDirectory(Paths.get(Objects.requireNonNull(Text2).getText())))) {
             Encription.setOpacity(0);
             flag = false;
             Text2.setStyle("-fx-border-color:red");
@@ -154,11 +154,12 @@ public class EncryptForm {
         } else {
             Key1.setStyle("-fx-border-color:green");
         }
-        if (NameFile.getText() != null && Text2.getText().equals("")) {
+        if (NameFile != null && NameFile.getText().equals("")) {
             Encription.setOpacity(0);
             flag = false;
             NameFile.setStyle("-fx-border-color:red");
         } else {
+            assert NameFile != null;
             NameFile.setStyle("-fx-border-color:green");
         }
 
@@ -198,7 +199,7 @@ public class EncryptForm {
     @FXML
     void FileChooser1() {
         FileChooserBt1.setOnAction(new EventHandler<>() {
-            Stage stage = new Stage();
+            final Stage stage = new Stage();
             @Override
             public void handle(ActionEvent event) {
                 Text1.clear();
@@ -211,7 +212,7 @@ public class EncryptForm {
     @FXML
     void FileChooser2() {
         FileChooserBt2.setOnAction(new EventHandler<>() {
-            Stage stage = new Stage();
+            final Stage stage = new Stage();
             @Override
             public void handle(ActionEvent event) {
                 Text2.clear();
