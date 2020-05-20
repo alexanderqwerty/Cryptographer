@@ -121,10 +121,6 @@ public class EncryptForm {
         }
     }
 
-    @FXML
-    void initialize() {
-    }
-
     //Зашифровывание файла
     @FXML
     void DoEncriptFile() {

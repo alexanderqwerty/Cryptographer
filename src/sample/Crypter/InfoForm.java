@@ -27,9 +27,4 @@ public class InfoForm {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    void initialize() {
-
-    }
 }
