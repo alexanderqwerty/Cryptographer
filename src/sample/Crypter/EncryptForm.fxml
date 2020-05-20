@@ -75,13 +75,13 @@
             <Button fx:id="FileChooserBt1" layoutX="13.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#FileChooser1" opacity="0.0" prefWidth="41.0" />
             <Button fx:id="FileChooserBt2" layoutX="13.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#FileChooser2" opacity="0.0" prefWidth="41.0" />
             <TextField fx:id="NameFile" layoutX="17.0" layoutY="119.0" prefHeight="25.0" prefWidth="451.0" promptText="Название файла и его разрешение" />
+            <Text fx:id="Encription" fill="#60d900" layoutX="163.0" layoutY="244.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Зашифровано">
+               <font>
+                  <Font name="Verdana Pro" size="22.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <Button fx:id="ChangeBt" layoutX="93.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#Change" text="Фыйл" />
-      <Text fx:id="Encription" fill="#60d900" layoutX="236.0" layoutY="307.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Зашифровано">
-         <font>
-            <Font name="Verdana Pro" size="22.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>
