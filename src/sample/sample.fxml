@@ -7,44 +7,44 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="600.0" style="-fx-background-color: #0aa3c4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-      <Button fx:id="ChoiceEnForm" layoutX="97.0" layoutY="248.0" mnemonicParsing="false" onMouseClicked="#goToEncrypt" prefHeight="40.0" prefWidth="175.0" style="-fx-background-color: #54bfd6;" text="  Зашифровать" textFill="WHITE" />
-      <Button fx:id="ChoiceDeForm" layoutX="319.0" layoutY="248.0" mnemonicParsing="false" onMouseClicked="#goToDecrypt" prefHeight="40.0" prefWidth="175.0" style="-fx-background-color: #54bfd6;" text="  Расшифровать" textFill="WHITE" />
-      <Text fill="WHITE" layoutX="171.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Криптограф" wrappingWidth="415.44271087646484">
-         <font>
-            <Font name="Verdana Pro Cond Black" size="52.0" />
-         </font>
-      </Text>
-      <Text fill="#23acca" layoutX="-3.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01">
-         <font>
-            <Font name="Verdana Pro Cond Black" size="96.0" />
-         </font>
-      </Text>
-      <Text fill="#23acca" layoutX="429.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="001">
-         <font>
-            <Font name="Verdana Pro Cond Black" size="96.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="63.0" fitWidth="68.0" layoutX="97.0" layoutY="129.0">
-         <image>
-            <Image url="@Crypter/Photoes/Tipo_Logotip.png" />
-         </image>
-      </ImageView>
-      <Text fx:id="InfoForm" fill="WHITE" layoutX="235.0" layoutY="328.0" onMouseClicked="#goToInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="о приложении">
-         <font>
-            <Font name="Verdana Pro Cond Black" size="16.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="324.0" layoutY="255.0">
-         <image>
-            <Image url="@Crypter/Photoes/Rasshfrovat.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="102.0" layoutY="255.0">
-         <image>
-            <Image url="@Crypter/Photoes/Zashifrovat.png" />
-         </image>
-      </ImageView>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0"
+            prefWidth="600.0" style="-fx-background-color: #0aa3c4;" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <Button fx:id="ChoiceEnForm" layoutX="97.0" layoutY="248.0" mnemonicParsing="false" onMouseClicked="#goToEncrypt"
+           prefHeight="40.0" prefWidth="175.0" style="-fx-background-color: #54bfd6;" text="  Зашифровать"
+           textFill="WHITE"/>
+   <Button fx:id="ChoiceDeForm" layoutX="319.0" layoutY="248.0" mnemonicParsing="false" onMouseClicked="#goToDecrypt"
+           prefHeight="40.0" prefWidth="175.0" style="-fx-background-color: #54bfd6;" text="  Расшифровать"
+           textFill="WHITE"/>
+   <Text fill="WHITE" layoutX="171.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Криптограф"
+         wrappingWidth="415.44271087646484">
+      <font>
+         <Font name="Verdana Pro Cond Black" size="52.0"/>
+      </font>
+   </Text>
+   <Text fill="#23acca" layoutX="-3.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01">
+      <font>
+         <Font name="Verdana Pro Cond Black" size="96.0"/>
+      </font>
+   </Text>
+   <Text fill="#23acca" layoutX="429.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="001">
+      <font>
+         <Font name="Verdana Pro Cond Black" size="96.0"/>
+      </font>
+   </Text>
+   <ImageView fitHeight="63.0" fitWidth="68.0" layoutX="97.0" layoutY="129.0">
+      <Image url="@Crypter/Photoes/Tipo_Logotip.png"/>
+   </ImageView>
+   <Text fx:id="InfoForm" fill="WHITE" layoutX="235.0" layoutY="328.0" onMouseClicked="#goToInfo" strokeType="OUTSIDE"
+         strokeWidth="0.0" text="о приложении">
+      <font>
+         <Font name="Verdana Pro Cond Black" size="16.0"/>
+      </font>
+   </Text>
+   <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="324.0" layoutY="255.0">
+      <Image url="@Crypter/Photoes/Rasshfrovat.png"/>
+   </ImageView>
+   <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="102.0" layoutY="255.0">
+      <Image url="@Crypter/Photoes/Zashifrovat.png"/>
+   </ImageView>
 </AnchorPane>

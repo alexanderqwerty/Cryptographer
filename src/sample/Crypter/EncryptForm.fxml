@@ -11,77 +11,65 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0aa3c4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Crypter.EncryptForm">
-   <children>
-      <Circle fx:id="BackCirBt" fill="#0aa3c4" layoutX="47.0" layoutY="47.0" onMouseClicked="#goToMainForm" radius="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <ImageView fx:id="BackBt1" fitHeight="38.0" fitWidth="41.0" layoutX="23.0" layoutY="27.0" onMouseClicked="#goToMainForm">
-         <image>
-            <Image url="@Photoes/93634.png" />
-         </image>
+   <Circle fx:id="BackCirBt" fill="#0aa3c4" layoutX="47.0" layoutY="47.0" onMouseClicked="#goToMainForm" radius="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+   <ImageView fx:id="BackBt1" fitHeight="38.0" fitWidth="41.0" layoutX="23.0" layoutY="27.0" onMouseClicked="#goToMainForm">
+      <Image url="@Photoes/93634.png" />
+   </ImageView>
+   <Text fill="#23acca" layoutX="420.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="179.40625">
+      <font>
+         <Font name="Verdana Pro Cond Black" size="96.0" />
+      </font>
+   </Text>
+   <Text fill="#23acca" layoutX="1.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01">
+      <font>
+         <Font name="Verdana Pro Cond Black" size="96.0" />
+      </font>
+   </Text>
+   <AnchorPane fx:id="anchorPane" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="500.0">
+      <TextField fx:id="Text" layoutX="17.0" layoutY="41.0" prefHeight="25.0" prefWidth="451.0" promptText="Тект" />
+      <TextField fx:id="Key" layoutX="18.0" layoutY="96.0" prefHeight="25.0" prefWidth="451.0" promptText="Ключ (16 знаков)" />
+      <Button layoutX="18.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#DoEncript" prefHeight="48.0" prefWidth="140.0" text="Зашифроваить" />
+      <TextArea fx:id="EnText" layoutX="14.0" layoutY="223.0" prefHeight="83.0" prefWidth="451.0" />
+      <Text layoutX="17.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Текст напишите ниже">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="18.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ключ напишите ниже">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </AnchorPane>
+   <AnchorPane fx:id="anchorPane2" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="501.0" visible="false">
+      <TextField fx:id="Text1" layoutX="55.0" layoutY="40.0" prefHeight="25.0" prefWidth="406.0" promptText="Расположение файла" />
+      <TextField fx:id="Key1" layoutX="17.0" layoutY="173.0" prefHeight="25.0" prefWidth="451.0" promptText="Ключ (16 знаков)" />
+      <Button layoutX="17.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#DoEncriptFile" prefHeight="48.0" prefWidth="140.0" text="Зашифроваить" />
+      <Text layoutX="17.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Расположение файла напишите ниже" wrappingWidth="334.96875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="17.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ключ напишите ниже">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Text2" layoutX="55.0" layoutY="81.0" prefHeight="25.0" prefWidth="406.0" promptText="Место для сохранения файла" />
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="38.0" onMouseClicked="#FileChooser1">
+         <Image url="@Photoes/mappe.png" />
       </ImageView>
-      <Text fill="#23acca" layoutX="420.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="179.40625">
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="79.0" onMouseClicked="#FileChooser2">
+         <Image url="@Photoes/mappe.png" />
+      </ImageView>
+      <Button fx:id="FileChooserBt1" layoutX="13.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#FileChooser1" opacity="0.0" prefWidth="41.0" />
+      <Button fx:id="FileChooserBt2" layoutX="13.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#FileChooser2" opacity="0.0" prefWidth="41.0" />
+      <TextField fx:id="NameFile" layoutX="17.0" layoutY="119.0" prefHeight="25.0" prefWidth="451.0" promptText="Название файла и его разрешение" />
+      <Text fx:id="Encription" fill="#60d900" layoutX="163.0" layoutY="244.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Зашифровано">
          <font>
-            <Font name="Verdana Pro Cond Black" size="96.0" />
+            <Font name="Verdana Pro" size="22.0" />
          </font>
       </Text>
-      <Text fill="#23acca" layoutX="1.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01">
-         <font>
-            <Font name="Verdana Pro Cond Black" size="96.0" />
-         </font>
-      </Text>
-      <AnchorPane fx:id="anchorPane" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="500.0">
-         <children>
-            <TextField fx:id="Text" layoutX="17.0" layoutY="41.0" prefHeight="25.0" prefWidth="451.0" promptText="Тект" />
-            <TextField fx:id="Key" layoutX="18.0" layoutY="96.0" prefHeight="25.0" prefWidth="451.0" promptText="Ключ (16 знаков)" />
-            <Button layoutX="18.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#DoEncript" prefHeight="48.0" prefWidth="140.0" text="Зашифроваить" />
-            <TextArea fx:id="EnText" layoutX="14.0" layoutY="223.0" prefHeight="83.0" prefWidth="451.0" />
-            <Text layoutX="17.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Текст напишите ниже">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="18.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ключ напишите ниже">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="anchorPane2" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="501.0" visible="false">
-         <children>
-            <TextField fx:id="Text1" layoutX="55.0" layoutY="40.0" prefHeight="25.0" prefWidth="406.0" promptText="Расположение файла" />
-            <TextField fx:id="Key1" layoutX="17.0" layoutY="173.0" prefHeight="25.0" prefWidth="451.0" promptText="Ключ (16 знаков)" />
-            <Button layoutX="17.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#DoEncriptFile" prefHeight="48.0" prefWidth="140.0" text="Зашифроваить" />
-            <Text layoutX="17.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Расположение файла напишите ниже" wrappingWidth="334.96875">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="17.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ключ напишите ниже">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <TextField fx:id="Text2" layoutX="55.0" layoutY="81.0" prefHeight="25.0" prefWidth="406.0" promptText="Место для сохранения файла" />
-            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="38.0" onMouseClicked="#FileChooser1">
-               <image>
-                  <Image url="@Photoes/mappe.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="17.0" layoutY="79.0" onMouseClicked="#FileChooser2">
-               <image>
-                  <Image url="@Photoes/mappe.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="FileChooserBt1" layoutX="13.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#FileChooser1" opacity="0.0" prefWidth="41.0" />
-            <Button fx:id="FileChooserBt2" layoutX="13.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#FileChooser2" opacity="0.0" prefWidth="41.0" />
-            <TextField fx:id="NameFile" layoutX="17.0" layoutY="119.0" prefHeight="25.0" prefWidth="451.0" promptText="Название файла и его разрешение" />
-            <Text fx:id="Encription" fill="#60d900" layoutX="163.0" layoutY="244.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Зашифровано">
-               <font>
-                  <Font name="Verdana Pro" size="22.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <Button fx:id="ChangeBt" layoutX="93.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#Change" text="Фыйл" />
-   </children>
+   </AnchorPane>
+   <Button fx:id="ChangeBt" layoutX="92.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Change" prefHeight="45.0" prefWidth="92.0" style="-fx-background-color: #23bbca;" text="Фыйл" />
 </AnchorPane>

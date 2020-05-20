@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.DirectoryChooser;
@@ -24,6 +25,7 @@ import javafx.stage.Stage;
 
 public class EncryptForm {
 
+    public ImageView BackBt1;
     @FXML
     private javafx.scene.text.Text Encription;
 
