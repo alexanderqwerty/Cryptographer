@@ -106,14 +106,7 @@ public class DecryptForm {
             flag = false;
             Text1.setStyle("-fx-border-color:red");
         } else {
-            try {
-                assert Text1 != null;
-                AES.decrypt("1234567812345678", Files.readAllBytes(Paths.get(Text1.getText())));
-            } catch (GeneralSecurityException | IOException e) {
-                decription.setOpacity(0);
-                flag = false;
-                Text1.setStyle("-fx-border-color:red");
-            }
+            Text1.setStyle("-fx-border-color:green");
         }
         if (Key1 != null && Key1.getText().length() != 16) {
             decription.setOpacity(0);
