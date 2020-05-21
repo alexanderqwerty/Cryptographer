@@ -44,7 +44,7 @@
    <AnchorPane fx:id="anchorPane2" layoutX="44.0" layoutY="60.0" prefHeight="300.0" prefWidth="501.0" visible="false">
       <TextField fx:id="Text1" layoutX="55.0" layoutY="40.0" prefHeight="25.0" prefWidth="406.0" promptText="Расположение файла" />
       <TextField fx:id="Key1" layoutX="17.0" layoutY="173.0" prefHeight="25.0" prefWidth="451.0" promptText="Ключ (16 знаков)" />
-      <Button layoutX="17.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#DoEncriptFile" prefHeight="48.0" prefWidth="140.0" text="Зашифроваить" />
+      <Button layoutX="17.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#DoEncriptFile" prefHeight="48.0" prefWidth="140.0" text="Зашифровать" />
       <Text layoutX="17.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Расположение файла напишите ниже" wrappingWidth="334.96875">
          <font>
             <Font size="18.0" />
@@ -71,5 +71,5 @@
          </font>
       </Text>
    </AnchorPane>
-   <Button fx:id="ChangeBt" layoutX="92.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Change" prefHeight="45.0" prefWidth="92.0" style="-fx-background-color: #23bbca;" text="Фыйл" />
+   <Button fx:id="ChangeBt" layoutX="92.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#Change" prefHeight="45.0" prefWidth="92.0" style="-fx-background-color: #23bbca;" text="Файл" />
 </AnchorPane>
