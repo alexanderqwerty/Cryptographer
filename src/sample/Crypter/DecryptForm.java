@@ -69,14 +69,7 @@ public class DecryptForm {
             flag = false;
             Text.setStyle("-fx-border-color:red");
         } else {
-            try {
-                assert Text != null;
-                AES.decrypt("1234567812345678", Base64.getDecoder().decode(Text.getText()));
-                Text.setStyle("-fx-border-color:green");
-            } catch (GeneralSecurityException | IllegalArgumentException e) {
-                flag = false;
-                Text.setStyle("-fx-border-color:red");
-            }
+            Text.setStyle("-fx-border-color:green");
         }
         if (Key != null && Key.getText().length() != 16) {
             flag = false;
